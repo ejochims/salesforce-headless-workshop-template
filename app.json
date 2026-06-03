@@ -1,0 +1,8 @@
+{
+  "name": "Headless 360 Workshop",
+  "description": "Hands-on workshop: Building on Salesforce with coding agent",
+  "buildpacks": [{ "url": "heroku/nodejs" }],
+  "env": {
+    "NODE_ENV": { "value": "production" }
+  }
+}
