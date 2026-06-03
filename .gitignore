@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.env
+*.log
+.DS_Store
+
+# IDE and tool configs
+.claude/
+.cursor/
+.playwright-mcp/
+test-results/
+
+# Planning docs (local reference only)
+research-context.md
+workshop-plan.md
+.claude/skills
