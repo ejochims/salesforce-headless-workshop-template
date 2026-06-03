@@ -1,0 +1,29 @@
+export const colors = {
+  brandBlue: "#0053E2",
+  brandYellow: "#FFC220",
+  salesforceBlue: "#00A1E0",
+  ink: "#182230",
+  text: "#344054",
+  textMuted: "#667085",
+  textSubtle: "#98A2B3",
+  bg: "#F7F9FC",
+  surface: "#FFFFFF",
+  surfaceSoft: "#F2F6FB",
+  surfaceBlue: "#EEF5FF",
+  border: "#D9E2EF",
+  borderStrong: "#B9C7D9",
+  green: "#067647",
+  greenBg: "#ECFDF3",
+  yellow: "#B54708",
+  yellowBg: "#FFFAEB",
+  red: "#B42318",
+  redBg: "#FEF3F2",
+} as const;
+
+export const layout = {
+  appMaxWidth: "1440px",
+  radius: "10px",
+  radiusSm: "6px",
+  shadow: "0 18px 45px rgba(16, 24, 40, 0.08)",
+  shadowSm: "0 8px 22px rgba(16, 24, 40, 0.06)",
+} as const;
