@@ -1,4 +1,4 @@
-# Case Study: Live-Validating This Workshop with a Fortune 1 Retailer
+# Case Study: Shipping This Workshop to a Fortune 1 Retailer
 
 ## Context
 
@@ -8,7 +8,7 @@ The session was scoped tight: an hour of live build, no slides, against a real o
 
 ## Outcome
 
-- Eight milestones rebuilt and hardened against live agent runs.
+- An end-to-end build path rebuilt and hardened against live agent runs.
 - A working React-on-Salesforce experience using the Multi-Framework beta, reading live `Carrier__c` and `Shipment__c` records via `@salesforce/sdk-data` and the GraphQL UI API.
 - A record-triggered Flow that propagates one Salesforce write to two surfaces (Lightning dashboard + custom React app) with no middleware.
 - A reusable prompt library that survived solo testing end to end and is now ready for an enterprise audience.
@@ -33,10 +33,14 @@ The session was scoped tight: an hour of live build, no slides, against a real o
 - Code Puppy (open-source agent harness, [`mpfaffenberger/code_puppy`](https://github.com/mpfaffenberger/code_puppy))
 - [`forcedotcom/sf-skills`](https://github.com/forcedotcom/sf-skills) — the official Salesforce skill library covering objects, fields, list views, LWC, FlexiPage, Flow, deploy, and data
 - [`dylandersen/sf-multiframework`](https://github.com/dylandersen/sf-multiframework) — React-beta-specific skill with the 11 non-negotiable rules and activation checklist
-- React 18 + Vite + TypeScript microsite for the workshop itself, served via Express on the Heroku Node buildpack
+- React 18 + Vite + TypeScript microsite for the workshop itself, served via Express on any Node host
 
 ## What I'd do differently
 
 - **Vendor the `dylandersen/sf-multiframework` skill into the repo.** Today the prompt fetches it from GitHub at run time. That's fine for stable network but adds a dependency I'd rather control — especially behind enterprise proxies.
 - **Add a Cases tab to the React app.** The Flow milestone produces a Case as the headline artifact, but the React app only renders Carriers and Shipments. Closing that loop visually would tighten the demo by another 30 seconds.
 - **Cache the Multi-Framework CLI plugin install.** The `sf plugins install @salesforce/plugin-ui-bundle-dev` step is the slowest part of the bootstrap. Pre-baking it into a workshop Docker image (or detecting it earlier in preflight) would cut a minute off the live cold-start.
+
+---
+
+[**Try the live demo →**](https://salesforce-headless-workshop-17750d05ecdb.herokuapp.com/) · [Back to README](./README.md)

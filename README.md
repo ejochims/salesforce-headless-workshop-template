@@ -6,7 +6,7 @@
 
 ![Workshop landing page](docs/screenshots/landing.png)
 
-This repo is a workshop microsite (Vite + React) plus a copy-ready prompt library that walks an agent through eight milestones — from environment setup all the way to a custom-branded React app deployed onto Salesforce via the Multi-Framework beta, plus a record-triggered Flow that propagates one Salesforce write to two surfaces with no middleware.
+This repo is a workshop microsite (Vite + React) plus a copy-ready prompt library that walks an agent through an end-to-end build path — from environment setup all the way to a custom-branded React app deployed onto Salesforce via the Multi-Framework beta, plus a record-triggered Flow that propagates one Salesforce write to two surfaces with no middleware.
 
 The scenario is **Acme Transport** — carriers, shipments, exception cases — kept deliberately generic so the build patterns translate to whatever vertical your team is in.
 
