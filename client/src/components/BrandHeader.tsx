@@ -1,6 +1,11 @@
 import React from "react";
 import { colors } from "../theme";
 
+const brandAssets = {
+  salesforce: "/assets/brand/salesforce-logo.jpg",
+  codePuppy: "/assets/brand/code-puppy-transparent.png",
+};
+
 interface BrandHeaderProps {
   onHome: () => void;
   referenceActive: boolean;
@@ -31,13 +36,23 @@ export function BrandHeader({ onHome, referenceActive, onToggleReference }: Bran
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "14px",
+          gap: "18px",
           minWidth: 0,
         }}
       >
-        <TextMark title="Agentic Workshop" subtitle="Coding harness" />
+        <BrandLogo
+          label="Code Puppy"
+          src={brandAssets.codePuppy}
+          width={116}
+        />
         <Divider />
-        <TextMark title="Salesforce" subtitle="Enterprise platform" accent />
+        <BrandLogo
+          label="Salesforce"
+          src={brandAssets.salesforce}
+          width={132}
+          height={38}
+          className="brand-logo-salesforce"
+        />
       </div>
 
       <div
@@ -60,10 +75,10 @@ export function BrandHeader({ onHome, referenceActive, onToggleReference }: Bran
               letterSpacing: 0,
             }}
           >
-            Headless 360 Workshop
+            Salesforce Headless Workshop
           </span>
           <span style={{ color: colors.textMuted, fontSize: "11px", fontWeight: 600 }}>
-            Salesforce build path for Acme Logistics
+            Build path for the Acme Transport scenario
           </span>
         </div>
         <button onClick={onToggleReference} style={referenceButtonStyle(referenceActive)}>
@@ -93,51 +108,57 @@ export function BrandHeader({ onHome, referenceActive, onToggleReference }: Bran
           .brand-title div span:last-child {
             display: none;
           }
-          .text-mark {
-            min-width: 0 !important;
-          }
-          .text-mark-title {
-            font-size: 13px !important;
-          }
-          .text-mark-subtitle {
-            display: none !important;
+          .brand-logo img {
+            width: auto !important;
+            max-width: 96px !important;
+            height: 24px !important;
           }
           .brand-divider {
             height: 22px !important;
           }
+          .brand-logo-salesforce {
+            margin-left: -2px !important;
+          }
+        }
+        .brand-logo-salesforce {
+          margin-left: -8px;
         }
       `}</style>
     </header>
   );
 }
 
-function TextMark({ title, subtitle, accent = false }: { title: string; subtitle: string; accent?: boolean }) {
+function BrandLogo({
+  src,
+  label,
+  width,
+  height = 30,
+  extra,
+  fit = "contain",
+  className,
+}: {
+  src: string;
+  label: string;
+  width: number;
+  height?: number;
+  extra?: React.ReactNode;
+  fit?: React.CSSProperties["objectFit"];
+  className?: string;
+}) {
   return (
-    <div className="text-mark" style={{ display: "grid", gap: "1px", minWidth: "118px" }}>
-      <span
-        className="text-mark-title"
+    <div className={`brand-logo ${className ?? ""}`} style={{ display: "flex", alignItems: "center", gap: "10px", minWidth: 0 }}>
+      {extra}
+      <img
+        src={src}
+        alt={`${label} logo`}
         style={{
-          color: accent ? colors.salesforceBlue : colors.ink,
-          fontSize: "15px",
-          fontWeight: 900,
-          letterSpacing: 0,
-          lineHeight: 1.05,
+          display: "block",
+          width,
+          height,
+          objectFit: fit,
+          borderRadius: fit === "cover" ? "4px" : 0,
         }}
-      >
-        {title}
-      </span>
-      <span
-        className="text-mark-subtitle"
-        style={{
-          color: colors.textMuted,
-          fontSize: "10px",
-          fontWeight: 800,
-          letterSpacing: 0,
-          textTransform: "uppercase",
-        }}
-      >
-        {subtitle}
-      </span>
+      />
     </div>
   );
 }
@@ -159,8 +180,8 @@ function Divider() {
 
 function referenceButtonStyle(active: boolean): React.CSSProperties {
   return {
-    background: active ? colors.brandBlue : colors.surface,
-    border: `1px solid ${active ? colors.brandBlue : colors.border}`,
+    background: active ? colors.brandPrimary : colors.surface,
+    border: `1px solid ${active ? colors.brandPrimary : colors.border}`,
     borderRadius: "999px",
     color: active ? "#FFFFFF" : colors.text,
     cursor: "pointer",

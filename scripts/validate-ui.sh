@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ORG_ALIAS="${1:-workshop-org}"
+ORG_ALIAS="${1:-acme-trial}"
 
 echo "Checking local UI artifacts"
-test -f force-app/main/default/lwc/deliveryTracker/deliveryTracker.js-meta.xml
-test -f force-app/main/default/lwc/deliveryTracker/deliveryTracker.html
+test -f force-app/main/default/lwc/shipmentTracker/shipmentTracker.js-meta.xml
+test -f force-app/main/default/lwc/shipmentTracker/shipmentTracker.html
 
 echo
 echo "Previewing deployable changes"

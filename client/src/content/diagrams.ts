@@ -16,7 +16,7 @@ export const diagrams = {
         date Scheduled_Delivery__c
         date Actual_Delivery__c
         number Weight_lbs__c
-        string Partner__c FK
+        string Carrier__c FK
     }
     CASE {
         string Id PK
@@ -24,8 +24,8 @@ export const diagrams = {
         string Priority
         string Issue_Type__c
         string Status__c
-        string Partner__c FK
-        string Delivery__c FK
+        string Carrier__c FK
+        string Shipment__c FK
     }
     CARRIER__C ||--o{ SHIPMENT__C : "Master-Detail"
     CARRIER__C ||--o{ CASE : "Lookup"
@@ -33,7 +33,7 @@ export const diagrams = {
 
   headless360: `graph LR
     subgraph Tools["Developer Tools"]
-        CP["coding agent"]
+        CP["Code Puppy"]
         CU["Claude / Cursor"]
     end
     subgraph MCP["MCP Layer"]
@@ -64,13 +64,13 @@ export const diagrams = {
     W --> C`,
 
   agentArchitecture: `graph LR
-    subgraph Agent["Operations Support Assistant"]
-        T1["Topic: Partner Support"]
+    subgraph Agent["Carrier Support Assistant"]
+        T1["Topic: Carrier Support"]
         T2["Topic: Case Preparation"]
     end
     subgraph Grounding["CRM Grounding"]
-        CA["Partner__c"]
-        SH["Delivery__c"]
+        CA["Carrier__c"]
+        SH["Shipment__c"]
         TC["Case"]
     end
     T1 --> CA

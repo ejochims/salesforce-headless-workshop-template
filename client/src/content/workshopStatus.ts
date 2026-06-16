@@ -20,7 +20,7 @@ export function statusTone(status: MilestoneStatus) {
     case "verified":
       return { color: colors.green, background: colors.greenBg, border: "#ABEFC6" };
     case "in-progress":
-      return { color: colors.brandBlue, background: colors.surfaceBlue, border: "#B2DDFF" };
+      return { color: colors.brandPrimary, background: colors.surfaceBlue, border: "#B2DDFF" };
     case "blocked":
       return { color: colors.red, background: colors.redBg, border: "#FECDCA" };
     default:

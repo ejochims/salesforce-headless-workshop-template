@@ -2,14 +2,14 @@
 
 ## Lab 1: Dependency Inventory
 
-Ask coding agent to summarize generated metadata and dependency order.
+Ask Code Puppy to summarize generated metadata and dependency order.
 
 ## Lab 2: Validation Deploy
 
 Run a validation deployment before promoting to a shared org.
 
 ```bash
-sf project deploy validate --source-dir force-app --target-org workshop-org
+sf project deploy validate --source-dir force-app --target-org acme-trial
 ```
 
 ## Lab 3: Demo Definition of Done

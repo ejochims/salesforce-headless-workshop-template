@@ -69,7 +69,7 @@ export function ReferenceDrawer({ panel, onClose, onSwitch }: ReferenceDrawerPro
           }}
         >
           <div>
-            <div style={{ color: colors.brandBlue, fontSize: "11px", fontWeight: 900, textTransform: "uppercase", letterSpacing: 0 }}>
+            <div style={{ color: colors.brandPrimary, fontSize: "11px", fontWeight: 900, textTransform: "uppercase", letterSpacing: 0 }}>
               Reference
             </div>
             <div style={{ color: colors.textMuted, fontSize: "12px", marginTop: "2px" }}>
@@ -111,8 +111,8 @@ export function ReferenceDrawer({ panel, onClose, onSwitch }: ReferenceDrawerPro
               onClick={() => onSwitch(p.id)}
               style={{
                 padding: "8px 10px",
-                background: panel === p.id ? colors.brandBlue : colors.surface,
-                border: `1px solid ${panel === p.id ? colors.brandBlue : colors.border}`,
+                background: panel === p.id ? colors.brandPrimary : colors.surface,
+                border: `1px solid ${panel === p.id ? colors.brandPrimary : colors.border}`,
                 borderRadius: layout.radiusSm,
                 cursor: "pointer",
                 color: panel === p.id ? "#FFFFFF" : colors.text,

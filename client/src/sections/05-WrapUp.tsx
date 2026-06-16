@@ -16,7 +16,7 @@ export function WrapUp({ statuses }: { statuses: MilestoneStatusMap }) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.download = "salesforce-headless-workshop-template-evidence.md";
+    link.download = "salesforce-headless-workshop-evidence.md";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -44,7 +44,7 @@ export function WrapUp({ statuses }: { statuses: MilestoneStatusMap }) {
             marginBottom: "20px",
           }}
         >
-          <div style={{ color: colors.brandBlue, fontSize: "12px", fontWeight: 900, textTransform: "uppercase", letterSpacing: 0, marginBottom: "12px" }}>
+          <div style={{ color: colors.brandPrimary, fontSize: "12px", fontWeight: 900, textTransform: "uppercase", letterSpacing: 0, marginBottom: "12px" }}>
             Handoff
           </div>
           <h1
@@ -61,7 +61,7 @@ export function WrapUp({ statuses }: { statuses: MilestoneStatusMap }) {
           </h1>
           <p style={{ margin: 0, color: colors.text, fontSize: "17px", lineHeight: 1.6, maxWidth: "760px" }}>
             Participants now have their own local Salesforce project, a Developer Edition org, generated metadata,
-            validation evidence, and next coding agent prompts for continuing toward a POC.
+            validation evidence, and next Code Puppy prompts for continuing toward a POC.
           </p>
           <div className="wrap-status-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, minmax(0, 1fr))", gap: "10px", marginTop: "20px" }}>
             {[
@@ -108,7 +108,7 @@ export function WrapUp({ statuses }: { statuses: MilestoneStatusMap }) {
                   "sfdx-project.json",
                   "force-app/main/default/",
                   "config/project-scratch-def.json",
-                  "Agent Spec",
+                  "labs/",
                 ].map((item) => (
                   <code key={item} style={repoCodeStyle}>
                     {item}
@@ -124,12 +124,14 @@ export function WrapUp({ statuses }: { statuses: MilestoneStatusMap }) {
           <section style={panelStyle}>
             <PanelHeader eyebrow="Stretch path" title="Next build modules" />
             <ul style={{ margin: 0, padding: "0 18px 18px 36px", color: colors.text, fontSize: "14px", lineHeight: 1.65 }}>
-              <li>Generate and preview the Operations Support Assistant authoring bundle.</li>
-              <li>Exception support flow that creates or updates standard Cases.</li>
-              <li>Agent test suite and preview utterance coverage.</li>
+              <li>Flow automation bonus — exception-to-Case trigger with queue ownership (Milestone 7).</li>
+              <li>Additional dashboard pages and role-specific UI extensions.</li>
+              <li>Additional seed data, cleanup scripts, or real workflow examples.</li>
               <li>Permission set and profile hardening.</li>
               <li>Deployment validation and scratch-to-sandbox promotion plan.</li>
-              <li>Real Acme Logistics objects and workflow mapping.</li>
+              <li>Apex tests and code analyzer checks if Apex was created.</li>
+              <li>Agentforce continuation through labs/agentforce-extensions.md.</li>
+              <li>Real-world transportation objects and workflow mapping.</li>
             </ul>
           </section>
         </div>
@@ -186,7 +188,7 @@ function StatusPill({ status }: { status: NonNullable<MilestoneStatusMap[string]
 function PanelHeader({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div style={{ padding: "18px 18px 12px" }}>
-      <div style={{ color: colors.brandBlue, fontSize: "11px", fontWeight: 900, textTransform: "uppercase", letterSpacing: 0 }}>
+      <div style={{ color: colors.brandPrimary, fontSize: "11px", fontWeight: 900, textTransform: "uppercase", letterSpacing: 0 }}>
         {eyebrow}
       </div>
       <h2 style={{ margin: "5px 0 0", color: colors.ink, fontSize: "20px", letterSpacing: 0 }}>
@@ -225,7 +227,7 @@ const statusMetricStyle: React.CSSProperties = {
 const exportButtonStyle: React.CSSProperties = {
   marginTop: "16px",
   padding: "12px 16px",
-  background: colors.brandBlue,
+  background: colors.brandPrimary,
   border: "none",
   borderRadius: layout.radiusSm,
   color: "#FFFFFF",
