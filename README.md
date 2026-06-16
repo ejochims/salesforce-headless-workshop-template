@@ -2,6 +2,8 @@
 
 > Live-validated, eight-milestone workshop for building React on Salesforce with an agentic coding harness (Code Puppy + Anthropic models).
 
+![Workshop landing page](docs/screenshots/landing.png)
+
 This is a portfolio-ready, scrubbed version of an enterprise workshop that was developed and live-validated against a Fortune 1 retailer's engineering team in June 2026. It hosts a presenter UI (Vite + React) plus a copy-ready prompt library that walks participants through eight milestones — from local environment readiness all the way to a custom React app deployed onto Salesforce via the Multi-Framework beta, plus a record-triggered Flow that propagates a single Salesforce write to two surfaces with no middleware.
 
 The scenario is **Acme Transport** — a deliberately generic logistics use case (carriers, shipments, exception cases) so the build patterns translate cleanly to whatever vertical your team is working on.
@@ -21,6 +23,10 @@ The scenario is **Acme Transport** — a deliberately generic logistics use case
 | 8 | Bonus | Automation | Build a record-triggered Flow that auto-creates an exception Case routed to a queue | 10 min |
 
 The Flow in milestone 8 is the headline demo: one Salesforce write propagates instantly to both the Lightning dashboard from milestone 6 and the React Transport Hub from milestone 7.
+
+Each milestone card carries a copy-ready prompt, expected artifacts, validation commands, and a recovery path.
+
+![Milestone card with prompt and validation gate](docs/screenshots/milestone.png)
 
 ## What you'll learn
 
@@ -82,6 +88,7 @@ prompts/                  Source prompt library, one file per milestone
 scripts/                  Validation scripts referenced by milestones
 labs/                     Post-workshop continuation modules
 public/assets/brand/      Visual assets (Code Puppy + Salesforce logos)
+docs/screenshots/         README screenshots
 force-app/                Empty SFDX shell for the workshop (filled by Code Puppy at runtime)
 ```
 
