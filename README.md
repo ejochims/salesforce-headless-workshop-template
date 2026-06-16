@@ -2,6 +2,8 @@
 
 > Live-validated, eight-milestone workshop for building React on Salesforce with an agentic coding harness (Code Puppy + Anthropic models).
 
+**🔗 Live demo:** [salesforce-headless-workshop-17750d05ecdb.herokuapp.com](https://salesforce-headless-workshop-17750d05ecdb.herokuapp.com/)
+
 ![Workshop landing page](docs/screenshots/landing.png)
 
 This is a portfolio-ready, scrubbed version of an enterprise workshop that was developed and live-validated against a Fortune 1 retailer's engineering team in June 2026. It hosts a presenter UI (Vite + React) plus a copy-ready prompt library that walks participants through eight milestones — from local environment readiness all the way to a custom React app deployed onto Salesforce via the Multi-Framework beta, plus a record-triggered Flow that propagates a single Salesforce write to two surfaces with no middleware.
@@ -57,9 +59,8 @@ Then:
 ## Tech stack
 
 - React 18 + Vite + TypeScript (workshop microsite)
-- Express (production server with optional auth gate)
+- Express server with `npm run build && npm start` — deployable to any Node host
 - Mermaid diagrams + Shiki code highlighting
-- Heroku Node.js buildpack (deployable to Heroku as-is via `app.json` + `Procfile`)
 - The deployed React-on-Salesforce milestone uses the Salesforce Multi-Framework beta with `@salesforce/sdk-data` + GraphQL UI API
 
 ## Adapting for your scenario
@@ -71,9 +72,19 @@ The Acme Transport scenario is intentionally generic so the patterns transplant.
 - Permission set + queue API names
 - Prompts and validation scripts
 
-## Live deployment
+## Deploy
 
-> Coming soon: a public hosted instance at `<your-deployed-url>`. The repo deploys to Heroku without modification — push to a Heroku remote and `npm start` will serve the production build.
+The microsite is a vanilla Express + Vite app — anywhere `node` runs, this runs. The build command is `npm run build` and the start command is `npm start` (which runs `node dist/index.js`). Set `NODE_ENV=production` so the server serves the static build instead of Vite middleware.
+
+A few common options:
+
+- **Heroku** — `app.json` and `Procfile` are already in the repo. `heroku create && git push heroku main` deploys it; the buildpack picks up Node automatically.
+- **Vercel** — connect the repo, set the build command to `npm run build` and the output directory to `dist/public`. The Express server isn't strictly needed if you just want the static workshop UI; for the SPA-only path, point Vercel at `dist/public/` after build.
+- **Railway / Render** — both auto-detect Node. Build command `npm run build`, start command `npm start`, set `NODE_ENV=production`.
+- **Fly.io** — `fly launch` detects Node; accept the defaults. The same `npm run build && npm start` lifecycle works inside the generated Dockerfile.
+- **Self-hosted / VPS / Docker** — `npm ci && npm run build && NODE_ENV=production node dist/index.js` is enough. Front it with whatever reverse proxy you prefer.
+
+The microsite holds no Salesforce credentials and makes no Salesforce calls — it's a presenter UI that displays prompts and tracks status. So the deployment surface is small and the only env var you need is `PORT` (defaults to 3000).
 
 ## Credits
 
@@ -85,7 +96,7 @@ The Acme Transport scenario is intentionally generic so the patterns transplant.
 
 ```text
 client/                   Workshop microsite (React + Vite)
-server/                   Express server (production auth + static serving)
+server/                   Express server (static serving in production, Vite middleware in dev)
 prompts/                  Source prompt library, one file per milestone
 scripts/                  Validation scripts referenced by milestones
 labs/                     Post-workshop continuation modules
