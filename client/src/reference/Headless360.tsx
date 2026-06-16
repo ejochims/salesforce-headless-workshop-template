@@ -7,15 +7,15 @@ export function Headless360() {
     <ReferenceStack>
       <Intro
         title="Headless 360"
-        body="Salesforce becomes an addressable platform from the tools Acme Logistics engineers already use. coding agent is the local coding harness; Salesforce MCP is the bridge; the Developer Edition org is the build target."
+        body="Salesforce becomes an addressable platform from the tools your engineers already use. Code Puppy is the local coding harness; Salesforce MCP is the bridge; the Developer Edition org is the build target."
       />
 
       <KeyValueList
         items={[
-          { label: "Developers", desc: "Build metadata, data, UI, and agent assets from coding agent." },
+          { label: "Developers", desc: "Build metadata, data, UI, and agent assets from Code Puppy." },
           { label: "Business tools", desc: "The same idea extends to governed access from chat and collaboration surfaces." },
           { label: "Agent-to-agent", desc: "Agentforce can later connect with internal systems such as The Brain." },
-          { label: "No AWS lock-in", desc: "The workshop keeps the Acme Logistics GCP constraint explicit." },
+          { label: "Cloud-portable", desc: "The harness runs locally and the org is the only deployed surface — no specific cloud is required." },
         ]}
       />
 

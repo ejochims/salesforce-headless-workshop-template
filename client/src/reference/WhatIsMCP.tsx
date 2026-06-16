@@ -8,17 +8,17 @@ export function WhatIsMCP() {
     <ReferenceStack>
       <Intro
         title="Model Context Protocol"
-        body="MCP is the local tool bridge between coding agent and Salesforce. In this workshop, the harness calls org, metadata, data, users, and test tools without making developers use Salesforce setup pages first."
+        body="MCP is the local tool bridge between Code Puppy and Salesforce. In this workshop, the harness calls org, metadata, data, users, and test tools without making developers use Salesforce setup pages first."
       />
 
-      <Diagram definition={diagrams.headless360} title="coding agent to MCP to Salesforce" />
+      <Diagram definition={diagrams.headless360} title="Code Puppy to MCP to Salesforce" />
 
       <KeyValueList
         items={[
           { label: "@salesforce/mcp", desc: "The Salesforce MCP server used by the coding harness." },
           { label: "Toolsets", desc: "orgs, metadata, data, and users are exposed intentionally." },
           { label: "Local execution", desc: "The MCP server runs on the developer machine." },
-          { label: "Workshop proof", desc: "Every build step validates that coding agent can operate the org." },
+          { label: "Workshop proof", desc: "Every build step validates that Code Puppy can operate the org." },
         ]}
       />
     </ReferenceStack>

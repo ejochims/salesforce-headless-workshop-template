@@ -62,7 +62,7 @@ export function Diagram({ definition, title }: DiagramProps) {
       {title && (
         <div
           style={{
-            color: colors.brandBlue,
+            color: colors.brandPrimary,
             fontSize: "11px",
             fontFamily: "'Inter', sans-serif",
             textTransform: "uppercase",

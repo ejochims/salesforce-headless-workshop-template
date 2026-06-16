@@ -67,7 +67,7 @@ export function buildWorkshopEvidenceReport(statuses: MilestoneStatusMap) {
   lines.push("");
   lines.push("- Keep the generated Salesforce project as the durable build artifact.");
   lines.push("- Use the validation commands above before moving from demo work into POC hardening.");
-  lines.push("- Carry unresolved blockers into the extension labs before publishing or activating Agentforce assets.");
+  lines.push("- Carry unresolved blockers into the extension labs before adding UI, data, deployment, testing, or Agentforce work.");
   lines.push("");
 
   return lines.join("\n");

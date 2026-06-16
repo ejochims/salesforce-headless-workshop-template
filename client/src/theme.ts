@@ -1,7 +1,10 @@
 export const colors = {
-  brandBlue: "#0053E2",
-  brandYellow: "#FFC220",
+  brandPrimary: "#0176D3",
+  brandAccent: "#1B5C9C",
   salesforceBlue: "#00A1E0",
+  codePuppyMint: "#88E89B",
+  codePuppyCyan: "#7FF4F2",
+  codePuppyLavender: "#A9A7F4",
   ink: "#182230",
   text: "#344054",
   textMuted: "#667085",

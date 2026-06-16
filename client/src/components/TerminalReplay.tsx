@@ -6,7 +6,7 @@ interface TerminalReplayProps {
   label?: string;
 }
 
-export function TerminalReplay({ prompt, label = "coding agent prompt" }: TerminalReplayProps) {
+export function TerminalReplay({ prompt, label = "Code Puppy prompt" }: TerminalReplayProps) {
   const [copied, setCopied] = useState(false);
 
   const copy = async () => {

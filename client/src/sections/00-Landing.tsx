@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { liveWorkshopMinutes, milestones } from "../content/exercises";
-import { headlessStrategyMap } from "../content/headlessStrategy";
+import { liveWorkshopMinutes, milestones, type MilestoneMode } from "../content/exercises";
 import type { MilestoneStatusMap } from "../content/workshopStatus";
 import { statusLabel, statusTone } from "../content/workshopStatus";
 import { colors, layout } from "../theme";
@@ -56,14 +55,14 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
                 borderRadius: "999px",
                 background: colors.surfaceBlue,
                 border: "1px solid #B2DDFF",
-                color: colors.brandBlue,
+                color: colors.brandPrimary,
                 fontSize: "12px",
                 fontWeight: 900,
                 textTransform: "uppercase",
                 letterSpacing: 0,
               }}
             >
-              One-hour live build
+              Code Puppy + Salesforce · One hour
             </div>
 
             <h1
@@ -77,7 +76,7 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
                 maxWidth: "840px",
               }}
             >
-              Copy prompts. Build Salesforce with coding agent.
+              From idea to deployed Salesforce app in an hour.
             </h1>
 
             <p
@@ -89,9 +88,9 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
                 maxWidth: "680px",
               }}
             >
-              Use this as the shared control surface for the live build: copy each prompt into coding agent,
-              set up a Developer Edition org, create a local Salesforce project, connect Salesforce MCP, and validate
-              each artifact before moving on.
+              Your engineers, your brand, your data — built with the tooling your teams already use.
+              Code Puppy on the keyboard, Salesforce as the system of record, a custom branded experience on top.
+              You leave with a deployed app, a local project you own, and the prompts to do it again.
             </p>
 
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", alignItems: "center" }}>
@@ -99,7 +98,7 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
                 onClick={onStart}
                 style={{
                   padding: "13px 20px",
-                  background: colors.brandBlue,
+                  background: colors.brandPrimary,
                   border: "none",
                   borderRadius: layout.radiusSm,
                   color: "#FFFFFF",
@@ -148,31 +147,9 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
                 fontWeight: 700,
               }}
             >
-              Every milestone centers on one prompt to paste into coding agent, one artifact to produce, and one
-              validation gate before the room moves forward.
+              Two takeaways: (1) Code Puppy builds natively on Salesforce, (2) a custom-branded React UI sits on live
+              Salesforce data. Every milestone is one prompt, one artifact, one validation gate.
             </div>
-          </div>
-        </section>
-
-        <section style={{ marginTop: "28px" }}>
-          <div style={{ marginBottom: "12px" }}>
-            <div style={{ color: colors.ink, fontSize: "18px", fontWeight: 900 }}>Headless strategy map</div>
-            <div style={{ color: colors.textMuted, fontSize: "13px", marginTop: "3px" }}>
-              The hands-on build follows the same operating model customers can reuse for real Salesforce delivery.
-            </div>
-          </div>
-          <div className="strategy-map-grid">
-            {headlessStrategyMap.map((node, index) => (
-              <div key={node.title} style={strategyNodeStyle}>
-                <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-                  <span style={strategyNumberStyle}>{index + 1}</span>
-                  <strong style={{ color: colors.ink, fontSize: "14px" }}>{node.title}</strong>
-                </div>
-                <p style={{ margin: 0, color: colors.text, fontSize: "13px", lineHeight: 1.55 }}>
-                  {node.body}
-                </p>
-              </div>
-            ))}
           </div>
         </section>
 
@@ -207,9 +184,25 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
                 color: colors.ink,
                 fontFamily: "'Inter', sans-serif",
                 fontSize: "14px",
-                outlineColor: colors.brandBlue,
+                outlineColor: colors.brandPrimary,
               }}
             />
+          </div>
+          <div
+            style={{
+              marginBottom: "12px",
+              padding: "12px 14px",
+              borderRadius: layout.radiusSm,
+              border: `1px solid ${colors.border}`,
+              background: colors.surfaceBlue,
+              color: colors.text,
+              fontSize: "13px",
+              lineHeight: 1.55,
+              fontWeight: 700,
+            }}
+          >
+            Complete Step 0 and modules 1-3 before the live session when possible; they cover access, local tooling,
+            project setup, and Salesforce MCP connection.
           </div>
 
           <div style={{ display: "grid", gap: "12px" }}>
@@ -258,8 +251,8 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
                       display: "inline-flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      background: index === 0 ? colors.brandBlue : colors.surfaceBlue,
-                      color: index === 0 ? "#FFFFFF" : colors.brandBlue,
+                      background: index === 0 ? colors.brandPrimary : colors.surfaceBlue,
+                      color: index === 0 ? "#FFFFFF" : colors.brandPrimary,
                       fontWeight: 900,
                       fontFamily: "'JetBrains Mono', monospace",
                     }}
@@ -276,6 +269,7 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
                     className="landing-status-cell"
                     style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "6px" }}
                   >
+                    <ModePill mode={milestone.mode} />
                     <span style={{ color: colors.textMuted, fontSize: "12px", fontWeight: 800 }}>
                       {milestone.duration} min
                     </span>
@@ -313,27 +307,15 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
           align-items: center;
         }
 
-        .strategy-map-grid {
-          display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 12px;
-        }
-
         @media (max-width: 900px) {
           .landing-hero {
             grid-template-columns: 1fr;
-          }
-          .strategy-map-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
           }
         }
 
         @media (max-width: 760px) {
           .landing-title {
             font-size: 44px;
-          }
-          .strategy-map-grid {
-            grid-template-columns: 1fr !important;
           }
           .landing-milestone-row {
             grid-template-columns: 44px minmax(0, 1fr) !important;
@@ -347,6 +329,42 @@ export function Landing({ onStart, onNavigate, statuses }: LandingProps) {
       `}</style>
     </div>
   );
+}
+
+function ModePill({ mode }: { mode: MilestoneMode }) {
+  const tone = modeTone(mode);
+  return (
+    <span
+      style={{
+        color: tone.color,
+        background: tone.background,
+        border: `1px solid ${tone.border}`,
+        borderRadius: "999px",
+        padding: "4px 8px",
+        fontSize: "11px",
+        fontWeight: 900,
+        whiteSpace: "nowrap",
+      }}
+    >
+      {modeLabel(mode)}
+    </span>
+  );
+}
+
+function modeLabel(mode: MilestoneMode) {
+  if (mode === "prework") return "Pre-work";
+  if (mode === "live") return "Live path";
+  return "Bonus";
+}
+
+function modeTone(mode: MilestoneMode) {
+  if (mode === "prework") {
+    return { color: colors.brandPrimary, background: colors.surfaceBlue, border: "#B2DDFF" };
+  }
+  if (mode === "live") {
+    return { color: colors.green, background: colors.greenBg, border: "#ABEFC6" };
+  }
+  return { color: colors.yellow, background: colors.yellowBg, border: "#FEDF89" };
 }
 
 const summaryCardStyle: React.CSSProperties = {
@@ -364,25 +382,3 @@ const statStyle: React.CSSProperties = {
   borderRadius: layout.radiusSm,
 };
 
-const strategyNodeStyle: React.CSSProperties = {
-  background: colors.surface,
-  border: `1px solid ${colors.border}`,
-  borderRadius: layout.radius,
-  boxShadow: layout.shadowSm,
-  padding: "14px",
-};
-
-const strategyNumberStyle: React.CSSProperties = {
-  width: "24px",
-  height: "24px",
-  borderRadius: "999px",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
-  background: colors.surfaceBlue,
-  color: colors.brandBlue,
-  fontFamily: "'JetBrains Mono', monospace",
-  fontSize: "12px",
-  fontWeight: 900,
-  flexShrink: 0,
-};

@@ -1,186 +1,90 @@
-# Salesforce Headless Workshop Template
+# Salesforce Headless Workshop
 
-A portfolio-ready workshop app for showing how account teams can build Salesforce metadata, UI, data, and Agentforce design artifacts from a local agentic coding environment.
+> Live-validated, eight-milestone workshop for building React on Salesforce with an agentic coding harness (Code Puppy + Anthropic models).
 
-The included scenario uses a fictional customer, **Acme Logistics**, so teams can see a complete reference implementation without depending on customer-private materials.
+This is a portfolio-ready, scrubbed version of an enterprise workshop that was developed and live-validated against a Fortune 1 retailer's engineering team in June 2026. It hosts a presenter UI (Vite + React) plus a copy-ready prompt library that walks participants through eight milestones — from local environment readiness all the way to a custom React app deployed onto Salesforce via the Multi-Framework beta, plus a record-triggered Flow that propagates a single Salesforce write to two surfaces with no middleware.
 
-## What This App Shows
+The scenario is **Acme Transport** — a deliberately generic logistics use case (carriers, shipments, exception cases) so the build patterns translate cleanly to whatever vertical your team is working on.
 
-- A coding agent can work through Salesforce CLI and MCP instead of requiring users to navigate Salesforce Setup.
-- Salesforce metadata can be generated, deployed, validated, and kept as a durable local project.
-- A fast prototype can still be grounded in governed CRM services for data, access, workflow, identity, and operational history.
-- Participants leave with a reusable build path, not just a demo output.
+## What you'll build
 
-## Screenshots
+| # | Mode | Phase | Outcome | Target Time |
+|---|---|---|---|---:|
+| 0 | Pre-work | Access | Install Code Puppy and connect a Salesforce org | 6 min |
+| 1 | Pre-work | Readiness | Verify Node 22+, Salesforce CLI v2.130.7+, skills, and Developer Edition access | 8 min |
+| 2 | Pre-work | Project | Create a local Salesforce project | 6 min |
+| 3 | Pre-work | Harness | Connect Code Puppy to Salesforce through MCP | 6 min |
+| 4 | Live | Foundation | Generate Carrier, Shipment, Case fields, permissions, and seed data | 13 min |
+| 5 | Live | Experience | Create the Lightning app shell, tabs, and list views | 10 min |
+| 6 | Live | Dashboard | Add the Transportation Operations dashboard and `shipmentTracker` LWC | 10 min |
+| 7 | Bonus | Custom UI | Deploy a React **Acme Transport Hub** on the Multi-Framework beta against live Carrier/Shipment data | 7 min |
+| 8 | Bonus | Automation | Build a record-triggered Flow that auto-creates an exception Case routed to a queue | 10 min |
 
-Screenshots are stored in `docs/screenshots/`.
+The Flow in milestone 8 is the headline demo: one Salesforce write propagates instantly to both the Lightning dashboard from milestone 6 and the React Transport Hub from milestone 7.
 
-![Landing page](docs/screenshots/landing.png)
+## What you'll learn
 
-![Milestone view](docs/screenshots/milestone.png)
+- **Code Puppy harness mechanics** — local agent loop, MCP server bindings, prompt → tool → file flow.
+- **Salesforce CLI + skills** — using [`forcedotcom/sf-skills`](https://github.com/forcedotcom/sf-skills) workflows for objects, fields, LWC, FlexiPage, Flow, deploy, and data.
+- **Multi-Framework React beta** — scaffolding a UI bundle, deploying via `sf project deploy start`, and reading live Salesforce data through `@salesforce/sdk-data` and the GraphQL UI API.
+- **Prompt engineering for build agents** — dry-run guardrails, deploy sanitization, layout idempotency, FLS-before-seed ordering.
+- **Platform trial workflow** — the React beta runs in a Salesforce Platform trial today (Developer Edition picks it up at Summer '26 GA on July 9, 2026); the workshop covers signup, `test.salesforce.com` auth, and the one-time Multi-Framework Setup toggle.
 
-![Reference drawer](docs/screenshots/reference.png)
-
-## Adapting for Another Customer
-
-This repo is intentionally not a fully generic product framework. It keeps one concrete fictional workshop as the reference implementation and provides a guided path for account teams to adapt the story, branding, Salesforce artifacts, prompts, and validation scripts.
-
-Start with [CUSTOMIZE.md](./CUSTOMIZE.md). It includes discovery questions, a coding-agent adaptation prompt, a find/replace map, file-by-file guidance, and a validation checklist.
-
-## Workshop Flow
-
-The live path is organized into seven milestones:
-
-| # | Phase | Outcome | Target Time |
-|---|---|---|---:|
-| 1 | Readiness | Verify Node, Salesforce CLI, skills, and Developer Edition access | 8 min |
-| 2 | Project | Create a local Salesforce project | 6 min |
-| 3 | Harness | Connect a coding agent to Salesforce through MCP | 6 min |
-| 4 | Foundation | Build Partner, Delivery, Case fields, permissions, and seed data | 13 min |
-| 5 | Experience | Create the Salesforce app, list views, and delivery tracker UI | 10 min |
-| 6 | Agent Preview | Draft an Operations Support Assistant Agentforce spec | 4 min |
-| 7 | Takeaway | Export evidence and continue toward POC work | 5 min |
-
-Each milestone includes:
-
-- A prompt to paste into a coding agent
-- Required inputs and expected artifacts
-- Validation criteria
-- Recovery commands for common blockers
-- A headless strategy lesson for the presenter
-
-## Key Features
-
-- **Presenter-first flow**: Landing page, milestone navigation, status tracking, and wrap-up handoff.
-- **Copy-ready prompts**: Workshop prompts live in both the UI and `prompts/`.
-- **Reference drawer**: Quick explanations for MCP, Salesforce customer infrastructure, Headless 360, Salesforce skills, and Developer Edition setup.
-- **Evidence export**: Wrap-up report generator for milestone status and continuation notes.
-- **Production auth gate**: Optional username/password login for hosted deployments.
-- **Heroku-ready server**: Express serves the Vite app in production and Vite middleware in development.
-
-## Tech Stack
-
-- React 18
-- Vite
-- TypeScript
-- Express
-- Mermaid diagrams
-- Shiki code highlighting
-- Heroku Node.js buildpack
-
-## Running Locally
-
-Install dependencies:
+## Quickstart
 
 ```bash
+git clone https://github.com/ejochims/salesforce-headless-workshop-template.git
+cd salesforce-headless-workshop-template
 npm install
-```
-
-Start the development server:
-
-```bash
 npm run dev
+# open http://localhost:3000
 ```
 
-Open:
+Then:
+
+1. Open Code Puppy ([install instructions](https://github.com/mpfaffenberger/code_puppy)).
+2. Run **Milestone 0 (Preflight)** from the app's prompt library or [`prompts/00-preflight.md`](./prompts/00-preflight.md).
+3. Work through the milestones in order. Each ends with a validation gate — paste the Code Puppy output into the workshop UI's status tracker and you'll get an exportable evidence report at the end.
+
+## Tech stack
+
+- React 18 + Vite + TypeScript (workshop microsite)
+- Express (production server with optional auth gate)
+- Mermaid diagrams + Shiki code highlighting
+- Heroku Node.js buildpack (deployable to Heroku as-is via `app.json` + `Procfile`)
+- The deployed React-on-Salesforce milestone uses the Salesforce Multi-Framework beta with `@salesforce/sdk-data` + GraphQL UI API
+
+## Adapting for your scenario
+
+The Acme Transport scenario is intentionally generic so the patterns transplant. To rebrand for your own customer or vertical, see [`CUSTOMIZE.md`](./CUSTOMIZE.md). It covers:
+
+- The customer story (carriers/shipments → whatever your domain uses)
+- Brand swap (colors, header, app name)
+- Permission set + queue API names
+- Prompts and validation scripts
+
+## Live deployment
+
+> Coming soon: a public hosted instance at `<your-deployed-url>`. The repo deploys to Heroku without modification — push to a Heroku remote and `npm start` will serve the production build.
+
+## Credits
+
+- [`forcedotcom/sf-skills`](https://github.com/forcedotcom/sf-skills) — official Salesforce coding-agent skill library used throughout the build milestones.
+- [`dylandersen/sf-multiframework`](https://github.com/dylandersen/sf-multiframework) — Multi-Framework React beta skill that hardens milestone 7.
+- [`mpfaffenberger/code_puppy`](https://github.com/mpfaffenberger/code_puppy) — open-source local coding agent harness used to drive the workshop.
+
+## Repository layout
 
 ```text
-http://localhost:3000
+client/                   Workshop microsite (React + Vite)
+server/                   Express server (production auth + static serving)
+prompts/                  Source prompt library, one file per milestone
+scripts/                  Validation scripts referenced by milestones
+labs/                     Post-workshop continuation modules
+public/assets/brand/      Visual assets (Code Puppy + Salesforce logos)
+force-app/                Empty SFDX shell for the workshop (filled by Code Puppy at runtime)
 ```
 
-In development, the authentication gate is disabled.
+## License
 
-## Building
-
-Create a production build:
-
-```bash
-npm run build
-```
-
-Run the built app:
-
-```bash
-npm start
-```
-
-## Production Configuration
-
-The production server enables the login screen only when `NODE_ENV=production` and `SITE_PASSWORD` is set.
-
-Recommended environment variables:
-
-| Variable | Purpose |
-|---|---|
-| `NODE_ENV=production` | Runs the production server path |
-| `PORT` | Provided automatically by Heroku |
-| `SITE_USER` | Login username, defaults to `workshop` |
-| `SITE_PASSWORD` | Login password; required to enable auth |
-| `SESSION_SECRET` | Stable HMAC secret for session cookies |
-
-Do not commit production credentials to this repository.
-
-## Deploying to Heroku
-
-The app includes `app.json` and a `Procfile` for Heroku deployment.
-
-Push the current `main` branch to the Heroku remote:
-
-```bash
-git push heroku main
-```
-
-Heroku runs:
-
-```bash
-npm run build
-npm start
-```
-
-## Repository Structure
-
-```text
-client/
-  index.html
-  src/
-    App.tsx
-    components/          Shared UI components
-    content/             Milestones, talking points, diagrams, evidence report
-    reference/           Reference drawer panels
-    sections/            Landing, milestone, and wrap-up sections
-    theme.ts             Shared colors and layout constants
-
-server/
-  index.ts               Express server, production auth, static serving, Vite dev middleware
-
-prompts/                 Source workshop prompts for each milestone
-scripts/                 Validation scripts used during workshop milestones
-labs/                    Post-workshop continuation modules
-public/assets/brand/     Optional brand assets for adapted workshops
-docs/screenshots/        Public screenshots for portfolio review
-```
-
-## Workshop Artifacts
-
-The workshop prompts guide participants toward:
-
-- A local Salesforce project
-- A connected Salesforce target org
-- Partner and Delivery custom metadata
-- Standard Case extensions for operations support
-- Permission set access for generated assets
-- Seed records for partners, deliveries, and cases
-- A Lightning app experience
-- A delivery tracker Lightning Web Component
-- An Agentforce Agent Spec or documented capability blocker
-- A continuation path for deployment hardening, UI extensions, and agent work
-
-## Salesforce Build Guardrails
-
-This project follows the workshop rules in `AGENTS.md`:
-
-- Use the default Salesforce target org unless a prompt names another org.
-- Keep generated Salesforce metadata under `force-app/main/default/`.
-- Prefer deployable metadata over browser-only configuration.
-- Validate each milestone before moving to the next one.
-- Do not call an Agentforce demo build complete unless deployment, tests, preview, and any available agent test suite succeed.
+MIT — fork it, use it, rebrand it.

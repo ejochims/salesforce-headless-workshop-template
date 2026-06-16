@@ -12,7 +12,6 @@ import { colors } from "./theme";
 const STORAGE_KEY = "workshop-section";
 const STATUS_STORAGE_KEY = "workshop-status";
 const TOTAL_SECTIONS = milestones.length + 2;
-const referencePanels = ["what-is-mcp", "customer-infra", "headless360", "sf-skills", "scratch-org"] as const;
 
 function loadStatuses(): MilestoneStatusMap {
   try {
@@ -33,16 +32,11 @@ function loadStatuses(): MilestoneStatusMap {
 
 export default function App() {
   const [section, setSection] = useState(() => {
-    const fromUrl = parseInt(new URLSearchParams(window.location.search).get("section") || "", 10);
-    if (Number.isFinite(fromUrl)) return Math.max(0, Math.min(TOTAL_SECTIONS - 1, fromUrl));
     const saved = localStorage.getItem(STORAGE_KEY);
     const parsed = saved ? parseInt(saved, 10) : 0;
     return Number.isFinite(parsed) ? Math.max(0, Math.min(TOTAL_SECTIONS - 1, parsed)) : 0;
   });
-  const [referencePanel, setReferencePanel] = useState<ReferencePanel>(() => {
-    const ref = new URLSearchParams(window.location.search).get("ref");
-    return referencePanels.includes(ref as (typeof referencePanels)[number]) ? (ref as ReferencePanel) : null;
-  });
+  const [referencePanel, setReferencePanel] = useState<ReferencePanel>(null);
   const [statuses, setStatuses] = useState<MilestoneStatusMap>(loadStatuses);
 
   const labels = useMemo(
@@ -157,7 +151,7 @@ export default function App() {
           style={{
             height: "100%",
             width: `${(section / (TOTAL_SECTIONS - 1)) * 100}%`,
-            background: `linear-gradient(90deg, ${colors.brandBlue}, ${colors.salesforceBlue})`,
+            background: `linear-gradient(90deg, ${colors.brandPrimary}, ${colors.salesforceBlue})`,
             transition: "width 0.3s ease",
           }}
         />

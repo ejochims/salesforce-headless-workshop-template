@@ -1,5 +1,5 @@
 import React from "react";
-import type { Milestone } from "../content/exercises";
+import type { Milestone, MilestoneMode } from "../content/exercises";
 import type { MilestoneStatus, MilestoneStatusMap } from "../content/workshopStatus";
 import { ExerciseCard } from "../components/ExerciseCard";
 import { colors } from "../theme";
@@ -21,6 +21,7 @@ export function ExerciseSection({
   statuses,
   onStatusChange,
 }: ExerciseSectionProps) {
+  const modeTone = getModeTone(milestone.mode);
   return (
     <div
       style={{
@@ -53,7 +54,7 @@ export function ExerciseSection({
             textTransform: "uppercase",
           }}
         >
-          {milestone.phase} / {milestone.mode === "live" ? "Live path" : "Takeaway"}
+          {milestone.phase} / {getModeLabel(milestone.mode)}
         </span>
         <span style={{ color: colors.borderStrong, fontSize: "12px" }}>/</span>
         <span style={{ color: colors.text, fontSize: "13px", fontWeight: 700 }}>
@@ -61,8 +62,9 @@ export function ExerciseSection({
         </span>
         <span
           style={{
-            color: milestone.mode === "live" ? colors.green : colors.yellow,
-            background: milestone.mode === "live" ? colors.greenBg : colors.yellowBg,
+            color: modeTone.color,
+            background: modeTone.background,
+            border: `1px solid ${modeTone.border}`,
             borderRadius: "999px",
             padding: "4px 9px",
             fontSize: "11px",
@@ -70,7 +72,7 @@ export function ExerciseSection({
             textTransform: "uppercase",
           }}
         >
-          {milestone.mode}
+          {getModeLabel(milestone.mode)}
         </span>
       </div>
 
@@ -86,4 +88,20 @@ export function ExerciseSection({
       </div>
     </div>
   );
+}
+
+function getModeLabel(mode: MilestoneMode) {
+  if (mode === "prework") return "Pre-work";
+  if (mode === "live") return "Live path";
+  return "Bonus";
+}
+
+function getModeTone(mode: MilestoneMode) {
+  if (mode === "prework") {
+    return { color: colors.brandPrimary, background: colors.surfaceBlue, border: "#B2DDFF" };
+  }
+  if (mode === "live") {
+    return { color: colors.green, background: colors.greenBg, border: "#ABEFC6" };
+  }
+  return { color: colors.yellow, background: colors.yellowBg, border: "#FEDF89" };
 }

@@ -32,7 +32,7 @@ export function CustomerInfra() {
     <ReferenceStack>
       <Intro
         title="Salesforce as Customer Infrastructure"
-        body="The workshop is not just creating screens. It is showing how a coding agent can shape an operations experience on top of trusted Salesforce services for data, access, workflow, and agents."
+        body="The workshop is not just creating screens. It is showing how Code Puppy can shape a transportation experience on top of trusted Salesforce services for data, access, workflow, and agents."
       />
 
       <Diagram definition={diagrams.customerInfra} title="Platform layers" />
@@ -54,7 +54,7 @@ export function CustomerInfra() {
           borderRadius: layout.radiusSm,
         }}
       >
-        <div style={{ color: colors.brandBlue, fontSize: "11px", fontWeight: 900, textTransform: "uppercase", letterSpacing: 0 }}>
+        <div style={{ color: colors.brandPrimary, fontSize: "11px", fontWeight: 900, textTransform: "uppercase", letterSpacing: 0 }}>
           Prototype to enterprise app
         </div>
         <h4 style={{ margin: "6px 0 8px", color: colors.ink, fontSize: "16px", lineHeight: 1.25 }}>
@@ -63,7 +63,7 @@ export function CustomerInfra() {
         <p style={{ margin: "0 0 14px", color: colors.text, fontSize: "13px", lineHeight: 1.6 }}>
           The fast build is possible because the workflow lands on a platform already designed for enterprise
           operations. As the app moves toward production, these Salesforce capabilities help it scale beyond a
-          prototype while the team stays focused on the operations experience.
+          prototype while the team stays focused on the transportation experience.
         </p>
 
         <div style={{ display: "grid", gap: "10px" }}>
@@ -100,8 +100,8 @@ export function CustomerInfra() {
           lineHeight: 1.6,
         }}
       >
-        <strong style={{ color: colors.yellow }}>Platform connection:</strong> The coding agent can stay focused on the
-        operations workflow while Salesforce provides the governed data, access, identity, and workflow
+        <strong style={{ color: colors.yellow }}>Why this matters:</strong> Code Puppy can stay focused on the
+        transportation workflow while Salesforce provides the governed data, access, identity, and workflow
         foundation.
       </div>
     </ReferenceStack>

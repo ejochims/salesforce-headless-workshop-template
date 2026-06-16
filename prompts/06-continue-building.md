@@ -1,34 +1,38 @@
-# 06 Continue Building
+# 06 Keep Building
 
-After the hour, continue in the participant-owned local Salesforce project:
+Use this module at the end of the session once milestones 4–6 (and optionally 7) are visible in the org.
 
-What they now have:
+## What participants now have
 
 - Developer Edition org connected to Salesforce CLI.
 - Local Salesforce project with generated metadata under `force-app/main/default`.
-- Operations custom objects, standard Case operations fields, permissions, and sample records.
-- Operations Workshop app shell, tabs, list views, and optional operations dashboard.
-- Agent Spec or documented Agentforce blocker if the preview module was reached.
+- Transportation custom objects, standard Case transportation fields, permissions, and sample records.
+- Transportation Workshop app shell, tabs, list views, and operations dashboard.
+- Optionally: `Transportation Exceptions` queue and `Shipment_Exception_To_Case` record-triggered Flow.
 
-- Operations Support Assistant authoring bundle generation and live-actions preview.
-- Exception support flow that creates or updates standard Cases.
-- Agent preview and test suites.
-- Permission sets and sharing checks.
-- Deployment hardening.
-- Real Acme Logistics workflow mapping.
+## What they could build next
 
-Prompt: plan the continuation path.
+- Additional dashboard views or role-specific LWC pages.
+- Additional automation — escalation flows, notification triggers, or status transitions.
+- Richer seed data or domain-realistic transportation workflow examples.
+- Permission hardening and sharing checks.
+- Apex tests and code analyzer runs if Apex was created.
+- An Agentforce agent that answers questions about shipments and exceptions (`labs/agentforce-extensions.md`).
+
+## Prompt: What Should We Keep Building?
 
 ```text
-Review this local Salesforce project and propose the next three implementation steps.
+Look at this local Salesforce project and tell me what else we could build using the installed Salesforce skills.
 
-Use the right installed Salesforce skills for each step:
-- developing-agentforce for Agent Script authoring.
-- testing-agentforce for Agentforce test specs and runs.
-- generating-permission-set for access hardening.
-- deploying-metadata for deploy validation and promotion.
-- handling-sf-data for additional seed data or cleanup.
+Review the files in force-app/main/default and the current org state, then suggest three or four ideas that would make this Transportation Workshop project more useful or impressive. For each idea, name the skill you'd use and give me a ready-to-paste prompt I can run right now to start it.
 
-Base the recommendations on the files that exist in force-app/main/default and the current target org state.
-Do not make changes yet. Return a prioritized next-step plan with validation commands.
+The skills available are:
+- generating-lwc-components and generating-flexipage for new dashboard views or record pages.
+- generating-flow for additional automation — alerts, escalations, or status transitions.
+- handling-sf-data for richer seed data or domain-realistic workflow examples.
+- generating-permission-set for tightening access.
+- running-apex-tests and running-code-analyzer for quality checks if Apex was created.
+- developing-agentforce for an AI agent that can answer questions about shipments and exceptions.
+
+Pick the ideas that would have the most visible impact and feel natural as next steps from what's already built. Return each idea as: what it does, which skill builds it, and a prompt I can paste directly into Code Puppy to start.
 ```
