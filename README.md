@@ -36,6 +36,8 @@ Each milestone card carries a copy-ready prompt, expected artifacts, validation 
 - **Prompt engineering for build agents** — dry-run guardrails, deploy sanitization, layout idempotency, FLS-before-seed ordering.
 - **Platform trial workflow** — the React beta runs in a Salesforce Platform trial today (Developer Edition picks it up at Summer '26 GA on July 9, 2026); the workshop covers signup, `test.salesforce.com` auth, and the one-time Multi-Framework Setup toggle.
 
+The build patterns — preflight, dry-run guardrails, FLS-before-seed ordering, layout sanitization, deploy → assign → seed → verify — translate cleanly to any agent harness with shell + file tools (Cursor, Claude Code, Aider, Cline). Code Puppy is the reference implementation because it's what the workshop was validated against, but the prompt library and milestone shape are harness-agnostic.
+
 ## Quickstart
 
 ```bash
