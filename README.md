@@ -1,14 +1,14 @@
 # Salesforce Headless Workshop
 
-> Live-validated, eight-milestone workshop for building React on Salesforce with an agentic coding harness (Code Puppy + Anthropic models).
+> Build a custom-branded React app on live Salesforce data in under an hour, end-to-end, with an agentic coding harness on the keyboard.
 
-**🔗 Live demo:** [salesforce-headless-workshop-17750d05ecdb.herokuapp.com](https://salesforce-headless-workshop-17750d05ecdb.herokuapp.com/)
+**🔗 [Try the live demo →](https://salesforce-headless-workshop-17750d05ecdb.herokuapp.com/)**
 
 ![Workshop landing page](docs/screenshots/landing.png)
 
-This is a portfolio-ready, scrubbed version of an enterprise workshop that was developed and live-validated against a Fortune 1 retailer's engineering team in June 2026. It hosts a presenter UI (Vite + React) plus a copy-ready prompt library that walks participants through eight milestones — from local environment readiness all the way to a custom React app deployed onto Salesforce via the Multi-Framework beta, plus a record-triggered Flow that propagates a single Salesforce write to two surfaces with no middleware.
+This repo is a workshop microsite (Vite + React) plus a copy-ready prompt library that walks an agent through eight milestones — from environment setup all the way to a custom-branded React app deployed onto Salesforce via the Multi-Framework beta, plus a record-triggered Flow that propagates one Salesforce write to two surfaces with no middleware.
 
-The scenario is **Acme Transport** — a deliberately generic logistics use case (carriers, shipments, exception cases) so the build patterns translate cleanly to whatever vertical your team is working on.
+The scenario is **Acme Transport** — carriers, shipments, exception cases — kept deliberately generic so the build patterns translate to whatever vertical your team is in.
 
 ## What you'll build
 
